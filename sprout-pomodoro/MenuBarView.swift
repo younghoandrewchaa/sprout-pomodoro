@@ -7,6 +7,7 @@ import SwiftUI
 
 struct MenuBarView: View {
     @EnvironmentObject var viewModel: TimerViewModel
+    @Environment(\.openSettings) private var openSettings
 
     var body: some View {
         VStack(spacing: 16) {
@@ -55,8 +56,7 @@ struct MenuBarView: View {
 
             HStack {
                 Button {
-                    NSApp.activate(ignoringOtherApps: true)
-                    NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+                    openSettings()
                 } label: {
                     Label("Settings", systemImage: "gear")
                         .font(.callout)
