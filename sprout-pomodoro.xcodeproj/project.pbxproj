@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		F85A49D32F5B19CA0029FF2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F85A49BB2F5B19C80029FF2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F85A49C22F5B19C80029FF2C;
+			remoteInfo = "sprout-pomodoro";
+		};
+		F85A49DD2F5B19CA0029FF2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F85A49BB2F5B19C80029FF2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F85A49C22F5B19C80029FF2C;
+			remoteInfo = "sprout-pomodoro";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F85A49C32F5B19C80029FF2C /* sprout-pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sprout-pomodoro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F85A49D22F5B19CA0029FF2C /* sprout-pomodoroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sprout-pomodoroTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F85A49DC2F5B19CA0029FF2C /* sprout-pomodoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sprout-pomodoroUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F85A49C52F5B19C80029FF2C /* sprout-pomodoro */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "sprout-pomodoro";
+			sourceTree = "<group>";
+		};
+		F85A49D52F5B19CA0029FF2C /* sprout-pomodoroTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "sprout-pomodoroTests";
+			sourceTree = "<group>";
+		};
+		F85A49DF2F5B19CA0029FF2C /* sprout-pomodoroUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "sprout-pomodoroUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F85A49C02F5B19C80029FF2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85A49CF2F5B19CA0029FF2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85A49D92F5B19CA0029FF2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F85A49BA2F5B19C80029FF2C = {
+			isa = PBXGroup;
+			children = (
+				F85A49C52F5B19C80029FF2C /* sprout-pomodoro */,
+				F85A49D52F5B19CA0029FF2C /* sprout-pomodoroTests */,
+				F85A49DF2F5B19CA0029FF2C /* sprout-pomodoroUITests */,
+				F85A49C42F5B19C80029FF2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F85A49C42F5B19C80029FF2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F85A49C32F5B19C80029FF2C /* sprout-pomodoro.app */,
+				F85A49D22F5B19CA0029FF2C /* sprout-pomodoroTests.xctest */,
+				F85A49DC2F5B19CA0029FF2C /* sprout-pomodoroUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F85A49C22F5B19C80029FF2C /* sprout-pomodoro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F85A49E62F5B19CA0029FF2C /* Build configuration list for PBXNativeTarget "sprout-pomodoro" */;
+			buildPhases = (
+				F85A49BF2F5B19C80029FF2C /* Sources */,
+				F85A49C02F5B19C80029FF2C /* Frameworks */,
+				F85A49C12F5B19C80029FF2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F85A49C52F5B19C80029FF2C /* sprout-pomodoro */,
+			);
+			name = "sprout-pomodoro";
+			packageProductDependencies = (
+			);
+			productName = "sprout-pomodoro";
+			productReference = F85A49C32F5B19C80029FF2C /* sprout-pomodoro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F85A49D12F5B19CA0029FF2C /* sprout-pomodoroTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F85A49E92F5B19CA0029FF2C /* Build configuration list for PBXNativeTarget "sprout-pomodoroTests" */;
+			buildPhases = (
+				F85A49CE2F5B19CA0029FF2C /* Sources */,
+				F85A49CF2F5B19CA0029FF2C /* Frameworks */,
+				F85A49D02F5B19CA0029FF2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F85A49D42F5B19CA0029FF2C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F85A49D52F5B19CA0029FF2C /* sprout-pomodoroTests */,
+			);
+			name = "sprout-pomodoroTests";
+			packageProductDependencies = (
+			);
+			productName = "sprout-pomodoroTests";
+			productReference = F85A49D22F5B19CA0029FF2C /* sprout-pomodoroTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F85A49DB2F5B19CA0029FF2C /* sprout-pomodoroUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F85A49EC2F5B19CA0029FF2C /* Build configuration list for PBXNativeTarget "sprout-pomodoroUITests" */;
+			buildPhases = (
+				F85A49D82F5B19CA0029FF2C /* Sources */,
+				F85A49D92F5B19CA0029FF2C /* Frameworks */,
+				F85A49DA2F5B19CA0029FF2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F85A49DE2F5B19CA0029FF2C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F85A49DF2F5B19CA0029FF2C /* sprout-pomodoroUITests */,
+			);
+			name = "sprout-pomodoroUITests";
+			packageProductDependencies = (
+			);
+			productName = "sprout-pomodoroUITests";
+			productReference = F85A49DC2F5B19CA0029FF2C /* sprout-pomodoroUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F85A49BB2F5B19C80029FF2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					F85A49C22F5B19C80029FF2C = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					F85A49D12F5B19CA0029FF2C = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = F85A49C22F5B19C80029FF2C;
+					};
+					F85A49DB2F5B19CA0029FF2C = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = F85A49C22F5B19C80029FF2C;
+					};
+				};
+			};
+			buildConfigurationList = F85A49BE2F5B19C80029FF2C /* Build configuration list for PBXProject "sprout-pomodoro" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F85A49BA2F5B19C80029FF2C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F85A49C42F5B19C80029FF2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F85A49C22F5B19C80029FF2C /* sprout-pomodoro */,
+				F85A49D12F5B19CA0029FF2C /* sprout-pomodoroTests */,
+				F85A49DB2F5B19CA0029FF2C /* sprout-pomodoroUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F85A49C12F5B19C80029FF2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85A49D02F5B19CA0029FF2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85A49DA2F5B19CA0029FF2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F85A49BF2F5B19C80029FF2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85A49CE2F5B19CA0029FF2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85A49D82F5B19CA0029FF2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F85A49D42F5B19CA0029FF2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F85A49C22F5B19C80029FF2C /* sprout-pomodoro */;
+			targetProxy = F85A49D32F5B19CA0029FF2C /* PBXContainerItemProxy */;
+		};
+		F85A49DE2F5B19CA0029FF2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F85A49C22F5B19C80029FF2C /* sprout-pomodoro */;
+			targetProxy = F85A49DD2F5B19CA0029FF2C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F85A49E42F5B19CA0029FF2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = G569HDEERH;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F85A49E52F5B19CA0029FF2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = G569HDEERH;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		F85A49E72F5B19CA0029FF2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G569HDEERH;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "deepeyesuk.sprout-pomodoro";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F85A49E82F5B19CA0029FF2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G569HDEERH;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "deepeyesuk.sprout-pomodoro";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F85A49EA2F5B19CA0029FF2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G569HDEERH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "deepeyesuk.sprout-pomodoroTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sprout-pomodoro.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sprout-pomodoro";
+			};
+			name = Debug;
+		};
+		F85A49EB2F5B19CA0029FF2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G569HDEERH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "deepeyesuk.sprout-pomodoroTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sprout-pomodoro.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sprout-pomodoro";
+			};
+			name = Release;
+		};
+		F85A49ED2F5B19CA0029FF2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G569HDEERH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "deepeyesuk.sprout-pomodoroUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "sprout-pomodoro";
+			};
+			name = Debug;
+		};
+		F85A49EE2F5B19CA0029FF2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G569HDEERH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "deepeyesuk.sprout-pomodoroUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "sprout-pomodoro";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F85A49BE2F5B19C80029FF2C /* Build configuration list for PBXProject "sprout-pomodoro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F85A49E42F5B19CA0029FF2C /* Debug */,
+				F85A49E52F5B19CA0029FF2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F85A49E62F5B19CA0029FF2C /* Build configuration list for PBXNativeTarget "sprout-pomodoro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F85A49E72F5B19CA0029FF2C /* Debug */,
+				F85A49E82F5B19CA0029FF2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F85A49E92F5B19CA0029FF2C /* Build configuration list for PBXNativeTarget "sprout-pomodoroTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F85A49EA2F5B19CA0029FF2C /* Debug */,
+				F85A49EB2F5B19CA0029FF2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F85A49EC2F5B19CA0029FF2C /* Build configuration list for PBXNativeTarget "sprout-pomodoroUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F85A49ED2F5B19CA0029FF2C /* Debug */,
+				F85A49EE2F5B19CA0029FF2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F85A49BB2F5B19C80029FF2C /* Project object */;
+}
