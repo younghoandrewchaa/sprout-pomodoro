@@ -6,27 +6,32 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
-struct sprout_pomodoroApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+struct SproutPomodoroApp: App {
+    @StateObject private var timerViewModel = TimerViewModel()
 
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    init() {
+        NotificationManager.shared.requestPermission()
+    }
 
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra {
+            MenuBarView()
+                .environmentObject(timerViewModel)
+                .onAppear {
+                    timerViewModel.onFinish = {
+                        NotificationManager.shared.sendTimerFinishedNotification()
+                    }
+                }
+        } label: {
+            TimerMenuBarLabel(viewModel: timerViewModel)
         }
-        .modelContainer(sharedModelContainer)
+        .menuBarExtraStyle(.window)
+
+        Settings {
+            SettingsView()
+                .environmentObject(timerViewModel)
+        }
     }
 }
