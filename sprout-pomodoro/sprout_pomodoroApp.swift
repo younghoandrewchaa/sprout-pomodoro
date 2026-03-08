@@ -25,7 +25,7 @@ struct SproutPomodoroApp: App {
                     }
                 }
         } label: {
-            TimerMenuBarLabel(viewModel: timerViewModel)
+            RenderedMenuBarLabel(viewModel: timerViewModel)
         }
         .menuBarExtraStyle(.window)
 

@@ -4,6 +4,17 @@
 //
 
 import SwiftUI
+import AppKit
+
+struct RenderedMenuBarLabel: View {
+    @ObservedObject var viewModel: TimerViewModel
+
+    var body: some View {
+        let renderer = ImageRenderer(content: TimerMenuBarLabel(viewModel: viewModel))
+        renderer.scale = NSScreen.main?.backingScaleFactor ?? 2.0
+        return Image(nsImage: renderer.nsImage ?? NSImage())
+    }
+}
 
 struct TimerMenuBarLabel: View {
     @ObservedObject var viewModel: TimerViewModel
