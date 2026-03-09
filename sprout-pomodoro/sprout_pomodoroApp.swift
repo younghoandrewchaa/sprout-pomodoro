@@ -12,6 +12,7 @@ struct SproutPomodoroApp: App {
     @StateObject private var timerViewModel = TimerViewModel()
 
     init() {
+        NSApp.applicationIconImage = NSImage(named: "AppIcon")
         NotificationManager.shared.requestPermission()
     }
 
