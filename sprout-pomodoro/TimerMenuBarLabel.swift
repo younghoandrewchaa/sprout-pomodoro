@@ -28,8 +28,8 @@ struct TimerMenuBarLabel: View {
                 .font(.system(size: 12, weight: .medium))
         }
         .foregroundStyle(.white)
-        .padding(.horizontal, 6)
-        .padding(.vertical, 2)
+        .padding(.horizontal, 10)
+        .frame(height: 22)
         .background {
             if viewModel.isRunning {
                 Capsule().fill(Color.orange)
