@@ -34,8 +34,8 @@ enum TimerMode {
 - `durationSeconds` becomes mode-aware:
   - `.focus` → `timerDurationMinutes * 60`
   - `.breakTime` → `breakDurationMinutes * 60`
-- `reset()` resets to current mode's duration (no mode change)
-- `skipToBreak()` switches mode to `.breakTime` and resets — only valid when in focus mode
+- `reset()` resets to current mode's duration (no mode change). Pressing reset in break mode stays in break mode and resets to `breakDurationMinutes`.
+- `skipToBreak()` switches mode to `.breakTime` and resets — guard-returns as a no-op if already in break mode
 - `onFinish: ((TimerMode) -> Void)?` — callback receives the mode that just completed so the caller can route the correct notification
 
 On finish (inside `tick()`): pause, flip mode, reset `remainingSeconds`, call `onFinish` with the completed mode.
