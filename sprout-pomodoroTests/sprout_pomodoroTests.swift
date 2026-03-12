@@ -6,6 +6,7 @@
 import XCTest
 @testable import sprout_pomodoro
 
+@MainActor
 final class TimerViewModelTests: XCTestCase {
 
     func test_initialState_isNotRunning() {

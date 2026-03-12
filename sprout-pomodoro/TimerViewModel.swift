@@ -11,24 +11,10 @@ enum TimerMode: Sendable, Equatable {
     case breakTime
 }
 
+@MainActor
 final class TimerViewModel: ObservableObject {
-    @Published var timerDurationMinutes: Int {
-        didSet {
-            UserDefaults.standard.set(timerDurationMinutes, forKey: "timerDurationMinutes")
-            if !isRunning && mode == .focus {
-                remainingSeconds = durationSeconds
-            }
-        }
-    }
-
-    @Published var breakDurationMinutes: Int {
-        didSet {
-            UserDefaults.standard.set(breakDurationMinutes, forKey: "breakDurationMinutes")
-            if !isRunning && mode == .breakTime {
-                remainingSeconds = durationSeconds
-            }
-        }
-    }
+    @Published var timerDurationMinutes: Int
+    @Published var breakDurationMinutes: Int
 
     @Published var mode: TimerMode = .focus
     @Published var remainingSeconds: Int
@@ -37,6 +23,7 @@ final class TimerViewModel: ObservableObject {
     var onFinish: ((TimerMode) -> Void)?
 
     private var cancellable: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
 
     var durationSeconds: Int {
         switch mode {
@@ -57,6 +44,34 @@ final class TimerViewModel: ObservableObject {
         let savedBreakMins = UserDefaults.standard.integer(forKey: "breakDurationMinutes")
         self.breakDurationMinutes = savedBreakMins > 0 ? savedBreakMins : 5
         self.remainingSeconds = (savedFocusMins > 0 ? savedFocusMins : 20) * 60
+
+        $timerDurationMinutes
+            .dropFirst()
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                UserDefaults.standard.set(newValue, forKey: "timerDurationMinutes")
+                if !self.isRunning && self.mode == .focus {
+                    self.remainingSeconds = self.durationSeconds
+                }
+            }
+            .store(in: &cancellables)
+
+        $breakDurationMinutes
+            .dropFirst()
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                UserDefaults.standard.set(newValue, forKey: "breakDurationMinutes")
+                if !self.isRunning && self.mode == .breakTime {
+                    self.remainingSeconds = self.durationSeconds
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    deinit {
+        cancellable?.cancel()
+        cancellable = nil
+        cancellables.removeAll()
     }
 
     func start() {
