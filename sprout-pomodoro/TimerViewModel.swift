@@ -50,8 +50,13 @@ final class TimerViewModel: ObservableObject {
             .sink { [weak self] newValue in
                 guard let self = self else { return }
                 UserDefaults.standard.set(newValue, forKey: "timerDurationMinutes")
-                if !self.isRunning && self.mode == .focus {
-                    self.remainingSeconds = self.durationSeconds
+                let newDuration = newValue * 60
+                if self.mode == .focus {
+                    if !self.isRunning {
+                        self.remainingSeconds = newDuration
+                    } else if self.remainingSeconds > newDuration {
+                        self.remainingSeconds = newDuration
+                    }
                 }
             }
             .store(in: &cancellables)
@@ -61,8 +66,13 @@ final class TimerViewModel: ObservableObject {
             .sink { [weak self] newValue in
                 guard let self = self else { return }
                 UserDefaults.standard.set(newValue, forKey: "breakDurationMinutes")
-                if !self.isRunning && self.mode == .breakTime {
-                    self.remainingSeconds = self.durationSeconds
+                let newDuration = newValue * 60
+                if self.mode == .breakTime {
+                    if !self.isRunning {
+                        self.remainingSeconds = newDuration
+                    } else if self.remainingSeconds > newDuration {
+                        self.remainingSeconds = newDuration
+                    }
                 }
             }
             .store(in: &cancellables)
