@@ -6,23 +6,24 @@
 import SwiftUI
 import Combine
 
-enum TimerMode: Equatable {
+enum TimerMode: Sendable, Equatable {
     case focus
     case breakTime
 }
 
-@MainActor
 final class TimerViewModel: ObservableObject {
-    @AppStorage("timerDurationMinutes") var timerDurationMinutes: Int = 20 {
+    @Published var timerDurationMinutes: Int {
         didSet {
+            UserDefaults.standard.set(timerDurationMinutes, forKey: "timerDurationMinutes")
             if !isRunning && mode == .focus {
                 remainingSeconds = durationSeconds
             }
         }
     }
 
-    @AppStorage("breakDurationMinutes") var breakDurationMinutes: Int = 5 {
+    @Published var breakDurationMinutes: Int {
         didSet {
+            UserDefaults.standard.set(breakDurationMinutes, forKey: "breakDurationMinutes")
             if !isRunning && mode == .breakTime {
                 remainingSeconds = durationSeconds
             }
@@ -51,9 +52,11 @@ final class TimerViewModel: ObservableObject {
     }
 
     init() {
-        let savedMinutes = UserDefaults.standard.integer(forKey: "timerDurationMinutes")
-        let minutes = savedMinutes > 0 ? savedMinutes : 20
-        self.remainingSeconds = minutes * 60
+        let savedFocusMins = UserDefaults.standard.integer(forKey: "timerDurationMinutes")
+        self.timerDurationMinutes = savedFocusMins > 0 ? savedFocusMins : 20
+        let savedBreakMins = UserDefaults.standard.integer(forKey: "breakDurationMinutes")
+        self.breakDurationMinutes = savedBreakMins > 0 ? savedBreakMins : 5
+        self.remainingSeconds = (savedFocusMins > 0 ? savedFocusMins : 20) * 60
     }
 
     func start() {

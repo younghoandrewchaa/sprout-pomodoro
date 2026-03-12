@@ -6,7 +6,6 @@
 import XCTest
 @testable import sprout_pomodoro
 
-@MainActor
 final class TimerViewModelTests: XCTestCase {
 
     func test_initialState_isNotRunning() {
@@ -101,9 +100,8 @@ final class TimerViewModelTests: XCTestCase {
 
     func test_durationSeconds_inBreakMode_usesBreakDuration() {
         let vm = TimerViewModel()
-        vm.breakDurationMinutes = 5  // set before mode change — AppStorage didSet is a no-op (mode is .focus)
-        vm.mode = .breakTime
-        XCTAssertEqual(vm.durationSeconds, 5 * 60)
+        vm.skipToBreak()
+        XCTAssertEqual(vm.durationSeconds, vm.breakDurationMinutes * 60)
     }
 
     func test_skipToBreak_switchesToBreakMode() {
@@ -128,10 +126,9 @@ final class TimerViewModelTests: XCTestCase {
 
     func test_skipToBreak_whenAlreadyInBreak_isNoOp() {
         let vm = TimerViewModel()
-        vm.breakDurationMinutes = 5  // set before mode change — AppStorage didSet is a no-op (mode is .focus)
-        vm.mode = .breakTime
+        vm.skipToBreak()       // enter break mode via API
         vm.remainingSeconds = 60  // partially elapsed
-        vm.skipToBreak()
+        vm.skipToBreak()       // should be a no-op
         // mode unchanged, remainingSeconds unchanged
         XCTAssertEqual(vm.mode, .breakTime)
         XCTAssertEqual(vm.remainingSeconds, 60)
@@ -139,12 +136,11 @@ final class TimerViewModelTests: XCTestCase {
 
     func test_reset_inBreakMode_staysInBreakMode() {
         let vm = TimerViewModel()
-        vm.breakDurationMinutes = 5  // set before mode change — AppStorage didSet is a no-op (mode is .focus)
-        vm.mode = .breakTime
+        vm.skipToBreak()       // enter break mode via API
         vm.remainingSeconds = 30
         vm.reset()
         XCTAssertEqual(vm.mode, .breakTime)
-        XCTAssertEqual(vm.remainingSeconds, 5 * 60)
+        XCTAssertEqual(vm.remainingSeconds, vm.breakDurationMinutes * 60)
     }
 
     func test_tick_whenFocusEnds_switchesToBreakMode() {
