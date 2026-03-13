@@ -27,13 +27,12 @@ struct TimerMenuBarLabel: View {
                 .monospacedDigit()
                 .font(.system(size: 12, weight: .medium))
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(
+            viewModel.isRunning
+                ? (viewModel.mode == .focus ? Color.orange : Color.green)
+                : .white
+        )
         .padding(.horizontal, 10)
         .frame(height: 22)
-        .background {
-            if viewModel.isRunning {
-                Capsule().fill(viewModel.mode == .focus ? Color.orange : Color.green)
-            }
-        }
     }
 }
