@@ -23,16 +23,13 @@ struct TimerMenuBarLabel: View {
         HStack(spacing: 4) {
             Image(systemName: "timer")
                 .symbolEffect(.pulse, isActive: viewModel.isRunning)
-            Text(viewModel.formattedTime)
-                .monospacedDigit()
-                .font(.system(size: 12, weight: .medium))
         }
         .foregroundStyle(
             viewModel.isRunning
                 ? (viewModel.mode == .focus ? Color.orange : Color.green)
                 : .white
         )
-        .padding(.horizontal, 10)
+        .font(.system(size: 14))
         .frame(height: 22)
     }
 }
