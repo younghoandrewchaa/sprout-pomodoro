@@ -8,7 +8,6 @@ import SwiftUI
 struct MenuBarView: View {
     @EnvironmentObject var viewModel: TimerViewModel
     @EnvironmentObject var updateChecker: UpdateChecker
-    @Environment(\.openSettings) private var openSettings
     @Environment(\.modelContext) private var modelContext
     @Environment(\.openURL) private var openURL
 
@@ -109,9 +108,7 @@ struct MenuBarView: View {
             Divider()
 
             HStack {
-                Button {
-                    openSettings()
-                } label: {
+                SettingsLink {
                     Label("Settings", systemImage: "gear")
                         .font(.callout)
                 }
