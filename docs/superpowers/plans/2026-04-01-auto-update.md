@@ -15,8 +15,8 @@
 | Action | File | Responsibility |
 |--------|------|----------------|
 | Create | `sprout-pomodoro/UpdateChecker.swift` | All update logic: fetch, parse, compare, schedule |
-| Modify | `sprout-pomodoro/sprout_pomodoroApp.swift` | Create `UpdateChecker` as `@StateObject`, pass via environment |
-| Modify | `sprout-pomodoro/MenuBarView.swift` | Read `updateChecker` from environment, show alert |
+| Modify | `sprout-pomodoro/SproutPomodoroApp.swift` | Create `UpdateChecker` as `@StateObject`, pass via environment |
+| Modify | `sprout-pomodoro/MenuBarView.swift` | Read `updateChecker` from environment, show inline update banner |
 | Create | `sprout-pomodoroTests/UpdateCheckerTests.swift` | Unit tests for parsing, comparison, fetch scenarios |
 
 ---
@@ -33,8 +33,19 @@ Create `sprout-pomodoro/UpdateChecker.swift`:
 
 ```swift
 import Foundation
+import Combine
 
-struct AvailableUpdate {
+private struct GitHubRelease: Decodable {
+    let tagName: String
+    let htmlUrl: String
+
+    enum CodingKeys: String, CodingKey {
+        case tagName = "tag_name"
+        case htmlUrl = "html_url"
+    }
+}
+
+struct AvailableUpdate: Equatable {
     let version: String
     let url: URL
 }
@@ -251,22 +262,7 @@ Expected: 9 pass (parsing tests), 5 fail (checkForUpdates not implemented yet).
 
 - [ ] **Step 3: Implement `checkForUpdates()` in `UpdateChecker.swift`**
 
-Add this private struct and the method to `UpdateChecker.swift`. Place `GitHubRelease` just above the class definition, and add `checkForUpdates()` inside the class:
-
-```swift
-// Add above the class:
-private struct GitHubRelease: Decodable {
-    let tagName: String
-    let htmlUrl: String
-
-    enum CodingKeys: String, CodingKey {
-        case tagName = "tag_name"
-        case htmlUrl = "html_url"
-    }
-}
-```
-
-Add inside the `UpdateChecker` class, after `isNewer`:
+Add this method inside the `UpdateChecker` class, after `isNewer` (`GitHubRelease` was already included in the scaffold in Task 1):
 
 ```swift
     func checkForUpdates() async {
@@ -314,7 +310,7 @@ git commit -m "feat: implement checkForUpdates via GitHub Releases API"
 
 **Files:**
 - Modify: `sprout-pomodoro/UpdateChecker.swift`
-- Modify: `sprout-pomodoro/sprout_pomodoroApp.swift`
+- Modify: `sprout-pomodoro/SproutPomodoroApp.swift`
 
 - [ ] **Step 1: Add `startPeriodicChecks()` to `UpdateChecker.swift`**
 
@@ -334,7 +330,7 @@ Add this method inside the `UpdateChecker` class, after `checkForUpdates()`:
     }
 ```
 
-- [ ] **Step 2: Modify `sprout_pomodoroApp.swift` to create and expose `UpdateChecker`**
+- [ ] **Step 2: Modify `SproutPomodoroApp.swift` to create and expose `UpdateChecker`**
 
 The current file is:
 
@@ -423,56 +419,63 @@ Expected: `BUILD SUCCEEDED`
 - [ ] **Step 4: Commit**
 
 ```bash
-git add sprout-pomodoro/UpdateChecker.swift sprout-pomodoro/sprout_pomodoroApp.swift
+git add sprout-pomodoro/UpdateChecker.swift sprout-pomodoro/SproutPomodoroApp.swift
 git commit -m "feat: add startPeriodicChecks and wire UpdateChecker into App"
 ```
 
 ---
 
-## Task 4: Add update alert to `MenuBarView`
+## Task 4: Add inline update banner to `MenuBarView`
+
+> **Note:** The original plan used a native SwiftUI `.alert()`. During implementation this was changed to an inline banner at the top of the VStack for a less intrusive UX. The banner shows an icon, version string, and "Update"/"Later" buttons inline, then a divider.
 
 **Files:**
 - Modify: `sprout-pomodoro/MenuBarView.swift`
 
-- [ ] **Step 1: Add `@EnvironmentObject var updateChecker: UpdateChecker` and start periodic checks**
+- [ ] **Step 1: Update `MenuBarView` properties**
 
-The current `MenuBarView` starts with:
-
-```swift
-struct MenuBarView: View {
-    @EnvironmentObject var viewModel: TimerViewModel
-    @Environment(\.openSettings) private var openSettings
-    @Environment(\.modelContext) private var modelContext
-```
-
-Replace those lines with:
+Replace the opening property declarations:
 
 ```swift
 struct MenuBarView: View {
     @EnvironmentObject var viewModel: TimerViewModel
-    @EnvironmentObject var updateChecker: UpdateChecker
-    @Environment(\.openSettings) private var openSettings
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.openURL) private var openURL
 ```
 
-- [ ] **Step 2: Start periodic checks in `onAppear` and add the alert**
+- [ ] **Step 2: Add the inline update banner and start periodic checks**
 
-The current `.onAppear` block at the bottom of the view body is:
+At the top of the `VStack` body, add the conditional banner before the mode label:
 
 ```swift
-        .onAppear {
-            viewModel.setupIfNeeded(context: modelContext) { completedMode in
-                switch completedMode {
-                case .focus:
-                    NotificationManager.shared.sendFocusFinishedNotification()
-                case .breakTime:
-                    NotificationManager.shared.sendBreakFinishedNotification()
+        VStack(spacing: 16) {
+            if let update = updateChecker.availableUpdate {
+                HStack(spacing: 8) {
+                    Image(systemName: "arrow.down.circle.fill")
+                        .foregroundStyle(.blue)
+                    Text("v\(update.version) available")
+                        .font(.caption)
+                        .foregroundStyle(.blue)
+                    Spacer()
+                    Button("Update") {
+                        updateChecker.availableUpdate = nil
+                        openURL(update.url)
+                    }
+                    .controlSize(.small)
+                    .buttonStyle(.borderedProminent)
+                    Button("Later") {
+                        updateChecker.availableUpdate = nil
+                    }
+                    .controlSize(.small)
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.secondary)
                 }
+                Divider()
             }
-        }
+            // ... rest of view
 ```
 
-Replace it with:
+In `.onAppear`, add `updateChecker.startPeriodicChecks()` after the timer setup:
 
 ```swift
         .onAppear {
@@ -485,24 +488,6 @@ Replace it with:
                 }
             }
             updateChecker.startPeriodicChecks()
-        }
-        .alert("Update Available", isPresented: Binding(
-            get: { updateChecker.availableUpdate != nil },
-            set: { if !$0 { updateChecker.availableUpdate = nil } }
-        )) {
-            Button("Update") {
-                if let url = updateChecker.availableUpdate?.url {
-                    NSWorkspace.shared.open(url)
-                }
-                updateChecker.availableUpdate = nil
-            }
-            Button("Later", role: .cancel) {
-                updateChecker.availableUpdate = nil
-            }
-        } message: {
-            if let update = updateChecker.availableUpdate {
-                Text("Version \(update.version) is available. Would you like to update?")
-            }
         }
 ```
 
@@ -520,9 +505,9 @@ Expected: `BUILD SUCCEEDED`
 
 Then run the app in Xcode (Cmd+R).
 
-- [ ] **Step 4: Manually test the alert**
+- [ ] **Step 4: Manually test the inline banner**
 
-To verify the alert works without waiting for a real GitHub release, temporarily replace the `UpdateChecker()` init in `sprout_pomodoroApp.swift` with a mock:
+To verify the banner works without waiting for a real GitHub release, temporarily replace the `UpdateChecker()` init in `SproutPomodoroApp.swift` with a mock:
 
 ```swift
 // TEMPORARY TEST — revert after verifying
@@ -536,7 +521,7 @@ To verify the alert works without waiting for a real GitHub release, temporarily
 )
 ```
 
-Run the app. The alert "Update Available — Version 1.0.0 is available." should appear immediately when the menu bar popover opens. Click "Update" — the browser should open the releases page. Click "Later" — the alert should dismiss.
+Run the app. A blue banner "v1.0.0 available" should appear at the top of the menu bar popover. Click "Update" — the browser should open the releases page. Click "Later" — the banner should dismiss.
 
 After verifying, revert the temporary change:
 
@@ -560,7 +545,7 @@ Expected: all tests pass.
 
 ```bash
 git add sprout-pomodoro/MenuBarView.swift
-git commit -m "feat: show update alert in menu bar popover when new version is available"
+git commit -m "feat: show inline update banner in menu bar popover when new version is available"
 ```
 
 ---
@@ -572,4 +557,4 @@ git commit -m "feat: show update alert in menu bar popover when new version is a
 | Task 1 | `UpdateChecker` skeleton + version parsing, fully tested |
 | Task 2 | `checkForUpdates()` fetches GitHub API + all fetch scenarios tested |
 | Task 3 | 24h periodic checks wired into App lifecycle |
-| Task 4 | Native alert in `MenuBarView`, opens browser on "Update" |
+| Task 4 | Inline update banner in `MenuBarView`, opens browser on "Update" |
