@@ -61,7 +61,7 @@ final class TimerViewModel: ObservableObject {
         refreshTodaySessions()
     }
 
-    private func refreshTodaySessions() {
+    func refreshTodaySessions() {
         guard let context = modelContext else { return }
         let startOfToday = Calendar.current.startOfDay(for: Date())
         let descriptor = FetchDescriptor<FocusSession>(
