@@ -58,7 +58,6 @@ final class TimerViewModel: ObservableObject {
         isSetUp = true
         self.modelContext = context
         self.onFinish = onFinish
-        refreshTodaySessions()
     }
 
     func refreshTodaySessions() {
